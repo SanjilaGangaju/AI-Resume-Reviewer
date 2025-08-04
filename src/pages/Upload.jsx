@@ -1,8 +1,12 @@
 import React from 'react'
+import FileInputForm from '../component/FileInputForm'
 
 const Upload = () => {
   return (
-    <div>Upload</div>
+    <>
+    <h1>Upload Page</h1>
+    <FileInputForm></FileInputForm>
+    </>
   )
 }
 
