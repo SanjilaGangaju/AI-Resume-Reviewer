@@ -16,7 +16,7 @@ body{
     bottom: 0;
     height: 2px;
     width: 0%;
-    background-color: currentColor;
+    background-color: #818CF8;
     transition: width 0.4s ease;
   }
 

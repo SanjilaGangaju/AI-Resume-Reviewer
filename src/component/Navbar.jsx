@@ -10,18 +10,18 @@ const Navbar = () => {
   }
   return (
     <>
-    <div className='relative px-8 py-4'>
+    <div className='relative px-10 bg-gray-50 py-6'>
       <nav className=' flex items-center  justify-between'>
         <div className='text-2xl text-center flex items-center text-indigo-500 justify-center font-bold'>AiResvue</div>
         
-        <div className='hidden flex text-xl font-semibold items- justify-between gap-6'>
-        <Link className="relative after:absolute after:left-0 after:bottom-0 after:transition-all after:w-0 after:duration-300 after:ease-in-out after:h-[2px] hover:after:w-full after:bg-current"
+        <div className='hidden md:flex text-xl font-semibold items- justify-between gap-6 '>
+        <Link className="relative text-gray-600 after:absolute after:left-0 after:bottom-0 after:transition-all after:w-0 after:duration-300 after:ease-in-out after:h-[2px] hover:after:w-full after:bg-indigo-400"
  to="/">Home</Link>
-        <Link className='hover-underline' to="/upload">Upload</Link>
-        <Link className='hover-underline' to="/login">Login</Link>
+        <Link className='hover-underline text-gray-600' to="/upload">Upload</Link>
+        <Link className='hover-underline text-gray-600' to="/login">Login</Link>
         </div>
         {hamOn&&
-          <div className='absolute right-0 top-10  bg-white w-full py-4 flex flex-col items-end pr-10 text-[0.8rem] font-semibold  gap-2'>
+          <div className='md:hidden absolute right-0 top-10  bg-white w-full py-4 flex flex-col items-end pr-10 text-[0.8rem] font-semibold  gap-2'>
           <button onClick={handleNav} className='text-indigo-400 text-[1.2rem]'><IoIosClose /></button>
         <Link className="relative after:absolute after:left-0 text-gray-600 after:bottom-0 after:transition-all after:w-0 after:duration-300 after:ease-in-out after:h-[2px] hover:after:w-full after:bg-current"
  to="/">Home</Link>
@@ -29,11 +29,12 @@ const Navbar = () => {
         <Link className='hover-underline text-gray-600' to="/login">Login</Link>
         </div>}
   
-        
-        <button onClick={handleNav}>
-          <RxHamburgerMenu className='text-2xl font-bolder text-indigo-700 text-black'/>
+         <button onClick={handleNav} className='md:hidden'>
+          <RxHamburgerMenu className='md:hidden text-2xl font-bolder text-indigo-700 text-black'/>
         </button>
+       
       </nav>
+      
     </div>
    
     </>
