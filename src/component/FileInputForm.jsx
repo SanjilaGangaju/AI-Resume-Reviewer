@@ -110,7 +110,7 @@ Also include:
 \`\`\`json
 {
   "scores": {
-    "toneAndStyle": {
+    "Tone & Style": {
       "score": number,
       "feedback": "string",
       "issues": ["string", ...],
@@ -134,7 +134,7 @@ Also include:
       "issues": ["string", ...],
       "suggestions": ["string", ...]
     },
-    "atsCompatibility": {
+    "ATS Compatibility": {
       "score": number,
       "feedback": "string",
       "strengths": ["string", ...],

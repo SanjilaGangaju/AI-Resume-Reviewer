@@ -12,7 +12,7 @@ const ResumeReview = () => {
   return (
     <div>
         {Object.entries(finalreview.scores).map(([key, category])=>(<div key={key}>
-             <h3>{key} -{category.score}</h3></div>
+             <h3>{key}-{category.score}/100</h3></div>
         ))}
         <div>Total Score: {finalreview.totalScore}</div>
     </div>

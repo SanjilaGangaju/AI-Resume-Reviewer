@@ -1,5 +1,5 @@
 import React from 'react'
-import FileInputForm from '../component/FileInputForm'
+
 import FileUploadForm from '../component/FileUploadForm'
 
 
