@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useCallback, useState } from 'react'
 import pdfToText from 'react-pdftotext';
 import Groq from "groq-sdk";
 import {marked} from 'marked';
@@ -8,15 +8,45 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 const groq = new Groq({ apiKey: import.meta.env.VITE_GROQ_API_KEY,
 dangerouslyAllowBrowser: true });
-
+import { useDropzone } from 'react-dropzone';
+import { AiOutlineCloudUpload } from 'react-icons/ai';
 
 const FileInputForm = () => {
      const [fileContent, setFileContent] = useState('');
      const [finalreview, setReview] = useState({});
      const navigate= useNavigate()
-  
+     const[fileName, setfileName] = useState(null);
+     const [file, setFile] = useState(null)
       // const edited_review= marked.parse(review);
  
+    // Drop Handler
+    const onDrop = useCallback((acceptedFiles)=>{
+      if(acceptedFiles.length>0){
+        const droppedFile = acceptedFiles[0];
+        setFile(droppedFile)
+
+        if (droppedFile.type=='application/pdf'){
+        pdfToText(droppedFile).then(text=>setFileContent(text))
+       .catch(error=> setFileContent(`Text extraction failed ${error}`))
+
+        }
+        else{
+          setFileContent('');
+        }
+      }
+    },[])
+   
+    const { getRootProps, getInputProps, isDragActive} = useDropzone({
+      onDrop,
+      multiple: false,
+      accept: {
+        'application/pdf': [],
+        'image/*': [],
+      }
+    });
+    const previewUrl = file ?  URL.createObjectURL(file) : null
+
+   
     
     
      const fetchDataAPI = async()=>{
@@ -134,15 +164,7 @@ Also include:
              model: "llama-3.3-70b-versatile",
            })
      }
-    const handleFileChange = (e)=>{
-       const file = e.target.files[0];
-       pdfToText(file).then(text=>setFileContent(text))
-       .catch(error=> setFileContent(`Text extraction failed ${error}`))
-       
-        
-
-       
-    }
+  
      useEffect(() => {
          if (finalreview && Object.keys(finalreview).length>0){
               navigate('/review',{ state: { finalreview } });
@@ -160,15 +182,43 @@ Also include:
     
   return (
     <div>
-        <div className='flex items-center justify-center'>
+        <div className='flex m-20 items-center justify-center'>
+            <h1>Upload Your Resume For Screening</h1>
             <form>
-                <label htmlFor='file'>Choose File</label><br></br>
+              <div {...getRootProps({className:`border px-3 rounded border-black border-dashed  ${isDragActive? 'border-blue-500 bg-blue-50':'border-gray-300 bg-white hover:bg-gray-100'}`
+})} >
+                <input {...getInputProps()}/>
+                {
+                 isDragActive ?
+                 <p className='text-blue-600'>Drop the files here.....</p>:
+                 <>
+                  <p className='text-gray-700'>Drag 'n' drop some files here, or click to select files</p>
+                  <p className="text-sm text-gray-500">Supported: .jpg, .png, .pdf, .docx</p>
+
+                 </>
+                
+              }
+
+                
+              </div>
+              {file&& (
+                <div>
+                  Selected File:
+                  {file.type.startsWith('image/')?(
+                    <img src={previewUrl} alt="preview"></img>
+                  ): file.type=='application/pdf'?(
+                    <iframe src={previewUrl} title="Pdf preview" className='w-full h-96 border rounded-md'></iframe>
+                  ):(<p>No preview available</p>)}
+                </div>
+              )}
+             
+                {/* <label htmlFor='file'>Choose File</label><br></br>
                 <input 
                 name="file" 
                 
                 className="border max-w-50 p-1 outline-bg-black mt-2 bg-amber-50" 
                 type="file"
-                onChange={handleFileChange}></input>
+                onChange={handleFileChange}></input> */}
             </form>
         </div>
          <div>

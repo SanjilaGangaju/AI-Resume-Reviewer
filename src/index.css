@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 
-
+body{
+  font-family: 'poppins'
+}
 @layer components {
   .hover-underline {
     @apply relative inline-block text-current;
