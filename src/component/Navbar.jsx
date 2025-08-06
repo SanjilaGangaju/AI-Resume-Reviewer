@@ -14,7 +14,7 @@ const Navbar = () => {
       <nav className=' flex items-center  justify-between'>
         <div className='text-2xl text-center flex items-center text-indigo-500 justify-center font-bold'>AiResvue</div>
         
-        <div className='hidden md:flex text-xl font-semibold items- justify-between gap-6 '>
+        <div className='hidden md:flex text-md font-semibold items- justify-between gap-6 '>
         <Link className="relative text-gray-600 after:absolute after:left-0 after:bottom-0 after:transition-all after:w-0 after:duration-300 after:ease-in-out after:h-[2px] hover:after:w-full after:bg-indigo-400"
  to="/">Home</Link>
         <Link className='hover-underline text-gray-600' to="/upload">Upload</Link>
