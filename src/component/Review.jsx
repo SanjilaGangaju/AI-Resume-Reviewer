@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { FaChevronDown } from "react-icons/fa";
 
 const Review = () => {
   const location = useLocation();
   const {resumeReview}= location.state || {};
-  console.log(resumeReview)
+  const [accordin, setAccordin] = useState([]);
+  const handleAccordin = (key)=>{
+    setAccordin((prev)=>prev.includes(key)?prev.filter((item)=>item!==key):[...prev,key])
+  }
  const scoreLabel = (score) => {
   if (score >= 90) return { label: 'Excellent', color: 'text-green-600', bg: 'bg-green-100' };
   if (score >= 80) return { label: 'Strong', color: 'text-orange-300', bg:'bg-orange-100'};
@@ -51,41 +55,47 @@ const Review = () => {
         <span className='font-bold text-xl text-gray-500'>ATS Score - {resumeReview["ATS Compatibility"].score}/100</span>
         <p>Great Job!</p>
         <p className='text-[0.7rem] text-gray-400'>This score represents how well your resume is likely to perform in Applicant Tracking Systems used by employers</p>
-        <div className='text-blue-300 text-[0.9rem]'>⚡{resumeReview["ATS Compatibility"].feedback}</div>
+        <div className='text-blue-300 text-[0.7rem]'>⚡{resumeReview["ATS Compatibility"].feedback}</div>
         {resumeReview["ATS Compatibility"].suggestions?.length>0&&(       
-                <div className='flex flex-col gap-1'>{resumeReview["ATS Compatibility"].suggestions.map(item=>(<span className="flex text-amber-300 text-[0.9rem]" key={item}>✨ {item}</span>))}</div>
+                <div className='flex flex-col gap-1'>{resumeReview["ATS Compatibility"].suggestions.map(item=>(<span className="flex text-amber-300 text-[0.7rem]" key={item}>✨ {item}</span>))}</div>
               )}
          {resumeReview["ATS Compatibility"].issues?.length>0 &&(
-              <div className='flex flex-col gap-1'>{resumeReview["ATS Compatibility"].issues.map(item=>(<span className="text-[0.9rem] text-red-300 flex" key={item}>⚠️ {item}</span>))}</div>
+              <div className='flex flex-col gap-1'>{resumeReview["ATS Compatibility"].issues.map(item=>(<span className="text-[0.7rem] text-red-300 flex" key={item}>⚠️ {item}</span>))}</div>
 
              )}
            {resumeReview["ATS Compatibility"].strengths?.length>0 &&(
-              <div className='flex flex-col gap-1'>{resumeReview["ATS Compatibility"].strengths.map(item=>(<span className="text-green-600 text-[0.9rem] flex" key={item}>🔥 {item}</span>))}</div>
+              <div className='flex flex-col gap-1'>{resumeReview["ATS Compatibility"].strengths.map(item=>(<span className="text-green-600 text-[0.7rem] flex" key={item}>🔥 {item}</span>))}</div>
 
              )}
+             <p className='text-[0.6rem] text-gray-400 italic'>Keep refining your resume to improve your chances of getting post ATS filters and  into the hand of recruiters</p>
           
         </div>
-      <div className='bg-gray-100 rounded-xl w-full flex flex-col gap-2 p-5'>
+      <div className='rounded-xl w-full flex flex-col gap-4 p-5'>
       
-      {Object.entries(resumeReview.scores).map(([key, category])=>(<div   key={key}>
-        <div className='flex gap-2 items-center justify-between'>
+      {Object.entries(resumeReview.scores).map(([key, category])=>(<div key={key}>
+        <div>
           
-          <span className='capitalize text-[0.8rem] text-gray-600'>
-            <p>{key}</p>
-            <hr></hr>
-             <span className='text-[0.7rem] text-gray-600'>{category.score} / 100</span>
-             <div className='bg-green-200'>Feedback: <br></br>{category.feedback}</div>
+          <div className='capitalize text-[0.9rem] bg-gray-100   flex justify-between px-5 py-2 rounded text-gray-600'>
+            <div className='flex gap-4 items-center'><span>{key}</span> <span className='text-[0.7rem] text-gray-600 bg-gray-50 px-2 rounded'>{category.score} / 100</span></div>
+            
+            <button  onClick = {()=>{handleAccordin(key)}}>{accordin.includes(key) ? '−' : '+'}</button>
+           
+
+          </div>
+           {accordin.includes(key) && (<div className='flex flex-col gap-2 px-5 justiy-center bg-indigo-50 rounded py-5'>
+             
+             <div className='bg-blue-100 rounded py-1  px-2 text-[0.7rem]'>{category.feedback}</div>
              {category.issues?.length>0 &&(
-              <div className='flex flex-col gap-1'>Issues: {category.issues.map(item=>(<span className="bg-red-100 rounded flex items-center justify-center p-1" key={item}>{item}</span>))}</div>
+              <div className='flex flex-col gap-1'>{category.issues.map(item=>(<span className="bg-red-200 rounded py-1  px-2 text-[0.7rem]" key={item}>{item}</span>))}</div>
 
              )}
              {category.suggestions?.length>0&&(       
-                <div className='flex flex-col gap-1'>Suggestions: {category.suggestions.map(item=>(<span className="bg-blue-100 rounded flex items-center justify-center p-1" key={item}>{item}</span>))}</div>
+                <div className='flex flex-col gap-1'>{category.suggestions.map(item=>(<span className="bg-yellow-50 rounded px-2 py-1 text-[0.7rem]" key={item}>{item}</span>))}</div>
               )}
-            
-
-
-          </span>
+            </div>)}
+            {/* <hr></hr>
+             
+             */}
 
            </div>
 
