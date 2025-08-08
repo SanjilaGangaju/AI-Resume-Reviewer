@@ -2,24 +2,46 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosClose } from "react-icons/io";
-const Navbar = ({loggedIn}) => {
+import { useNavigate } from 'react-router-dom';
+const Navbar = ({loggedIn, setloggedIn}) => {
+  
   const [hamOn, setHamOn]=useState(false)
+ 
   const handleNav=()=>{
     setHamOn(!hamOn);
 
+  }
+  const navigate = useNavigate();
+  const logout=()=>{
+    setloggedIn(false);
+    navigate('/')
+    
+    
+    
   }
   return (
     <>
     <div className='relative px-10 bg-gray-50 py-6'>
       <nav className=' flex items-center  justify-between'>
-        <div className='text-2xl text-center flex items-center text-indigo-500 justify-center font-bold'>AiResvue</div>
+        <div className='text-2xl text-center flex items-center text-indigo-500 justify-center font-bold'><Link to='/'>AiResvue</Link></div>
         
         <div className='hidden md:flex text-[1.3rem] text-gray-300 font-semibold items- justify-between gap-6 '>
+
+        {loggedIn? 
+        <>
+        
         <Link className="relative text-gray-600 after:absolute after:left-0 after:bottom-0 after:transition-all after:w-0 after:duration-300 after:ease-in-out after:h-[2px] hover:after:w-full after:bg-indigo-400"
  to="/">Home</Link>
-        {loggedIn&& <Link className='hover-underline text-gray-600' to="/upload">Upload</Link>}
-       
-        <Link className='hover-underline text-gray-600' to="/login">Login</Link>
+  <Link className='hover-underline text-gray-600' to="/upload">Upload</Link>
+
+    <button onClick={logout} className='text-gray-600'>Logout</button>
+    </>
+       :<>  
+        <Link className="relative text-gray-600 after:absolute after:left-0 after:bottom-0 after:transition-all after:w-0 after:duration-300 after:ease-in-out after:h-[2px] hover:after:w-full after:bg-indigo-400"
+ to="/">Home</Link>
+       <Link className='hover-underline text-gray-600' to="/login">Login</Link>
+        </>
+      }
         </div>
         {hamOn&&
           <div className='md:hidden absolute right-0 top-10  bg-white w-full py-4 flex flex-col items-end pr-10 text-[0.8rem] font-semibold  gap-2'>

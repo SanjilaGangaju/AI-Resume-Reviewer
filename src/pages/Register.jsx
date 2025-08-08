@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { auth } from '../firebase';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 const Register = () => {
+  const navigate= useNavigate();
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
 
@@ -11,6 +13,8 @@ const Register = () => {
         try{
             const user = await createUserWithEmailAndPassword(auth, email, password)
             console.log(user)
+            navigate('/login')
+          
 
         }
         catch(error){
@@ -27,13 +31,13 @@ const Register = () => {
         <div>
            
         <input className='border p-1 w-full border-indigo-200 rounded focus:outline-indigo-400 placeholder:text-gray-400 placeholder:text-[0.7rem]' 
-        value={email} required="true" onChange={(e)=>setEmail(e.target.value)}
+        value={email} required onChange={(e)=>setEmail(e.target.value)}
         type="email"  autoComplete="off" placeholder='Email'></input>
         </div>
         <div>
          
         <input className='w-full border p-1 border-indigo-200 focus:outline-indigo-400 rounded placeholder:text-gray-400 placeholder:text-[0.7rem]' 
-        value={password} required="true" onChange={(e)=>setPassword(e.target.value)}
+        value={password} required onChange={(e)=>setPassword(e.target.value)}
         type="password"  autoComplete="off" placeholder='Password'/>
         </div>
        

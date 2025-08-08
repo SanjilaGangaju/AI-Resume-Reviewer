@@ -20,7 +20,8 @@ const Review = () => {
     <div className='p-8 flex flex-col bg-gray-50  gap-4'>
       <h2 className='font-bold text-2xl'>Resume Review</h2>
      
-      <div className='flex gap-10 justify-start items-center  px-10 '>
+     <div className="flex gap-2"> 
+       <div className='flex gap-10 justify-start items-center  px-10 '>
         
      
        <div >
@@ -51,6 +52,8 @@ const Review = () => {
         
       )})}
       </div>
+     </div>
+     
       <div className='bg-indigo-50 flex flex-col gap-3 rounded-xl px-5 py-3'>
         <span className='font-bold text-xl text-gray-500'>ATS Score - {resumeReview["ATS Compatibility"].score}/100</span>
         <p>Great Job!</p>

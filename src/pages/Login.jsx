@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+
 import { auth } from '../firebase';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {signInWithEmailAndPassword} from 'firebase/auth'
 const Login = ({setloggedIn}) => {
+  const navigate= useNavigate();
    const[email, setEmail] = useState("");
       const[password, setPassword] = useState("");
   
@@ -12,6 +15,8 @@ const Login = ({setloggedIn}) => {
               await signInWithEmailAndPassword(auth, email, password)
               console.log("Login Successful")
               setloggedIn(true);
+              // localStorage.setItem("keepLoggedIn", JSON.stringify(true));
+              navigate('/')
   
           }
           catch(error){
@@ -28,13 +33,13 @@ const Login = ({setloggedIn}) => {
         <div>
           
         <input className='border p-1 w-full border-indigo-200 rounded focus:outline-indigo-400 placeholder:text-gray-400 placeholder:text-[0.6rem]' 
-        value={email} required="true" onChange={(e)=>setEmail(e.target.value)}
+        value={email} required onChange={(e)=>setEmail(e.target.value)}
         type="email"  autoComplete="off" placeholder='Email'></input>
         </div>
         <div>
          
         <input className='w-full border p-1 border-indigo-200 rounded focus:outline-indigo-400 placeholder:text-gray-400 placeholder:text-[0.7rem]'  
-        value={password} required="true" onChange={(e)=>setPassword(e.target.value)}
+        value={password} required onChange={(e)=>setPassword(e.target.value)}
         type="password"  autoComplete="off" placeholder="Password"/>
         </div>
        

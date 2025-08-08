@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className='bg-gray-100 px-8 py-3'>
       <div className='grid grid-cols-3 gap-8'>
          <div className='flex flex-col items-start  justify-center '><span className='text-indigo-300 text-xl '>AIResvue</span>
-         <p className='text-[0.7rem] text-gray-400' text-justify> Smart resume feedback powered by AI. Improve your job chances with real-time insights.</p>
+         <p className='text-[0.7rem] text-gray-400'> Smart resume feedback powered by AI. Improve your job chances with real-time insights.</p>
          </div>
       
        <div className='flex text-[0.8rem] gap-6 items-center font-semibold  mb-2'>
