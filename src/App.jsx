@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom'
 import Navbar from './component/Navbar'
 import Home from './pages/Home'
@@ -10,9 +10,30 @@ import Footer from './component/Footer'
 import Register from './pages/Register'
 import ProtectedRoute from './component/ProtectedRoute'
 
+import { auth } from './firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 const App = () => {
-  const[loggedIn, setloggedIn] = useState(false);
-  // const loggedIn = JSON.parse(localStorage.getItem("keepLoggedIn"))
+  
+  const[loggedIn, setloggedIn] = useState(()=>{
+    return JSON.parse(localStorage.getItem("keepLoggedIn")) || false;
+  })
+   
+  useEffect(()=>{
+      const unsubscribe = onAuthStateChanged(auth, (user)=>{
+        if(user){
+          setloggedIn(true);
+          localStorage.setItem("keepLoggedIn", JSON.stringify(true));
+
+        }
+        else{
+          setloggedIn(false);
+          localStorage.removeItem("keepLoggedIn");
+        }
+      })
+      return ()=> unsubscribe();
+  },[])
+
+
   // console.log(loggedIn)
   return (
     <>

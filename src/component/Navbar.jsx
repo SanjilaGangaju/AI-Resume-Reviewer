@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import { signOut } from "firebase/auth";
+import { auth } from '../firebase'; // your firebase config
 const Navbar = ({loggedIn, setloggedIn}) => {
   
   const [hamOn, setHamOn]=useState(false)
@@ -12,9 +14,19 @@ const Navbar = ({loggedIn, setloggedIn}) => {
 
   }
   const navigate = useNavigate();
-  const logout=()=>{
-    setloggedIn(false);
-    navigate('/')
+  const logout=async()=>{
+    try{
+      await signOut(auth);
+      setloggedIn(false);
+      localStorage.removeItem("keepLoggedIn");
+     navigate('/');
+    }
+    catch (error){
+      console.log(error)
+    }
+    
+
+   
     
     
     

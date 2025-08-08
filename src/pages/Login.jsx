@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { auth } from '../firebase';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import {signInWithEmailAndPassword} from 'firebase/auth'
+import {signInWithEmailAndPassword, browserLocalPersistence, setPersistence} from 'firebase/auth'
 const Login = ({setloggedIn}) => {
   const navigate= useNavigate();
    const[email, setEmail] = useState("");
@@ -12,10 +12,11 @@ const Login = ({setloggedIn}) => {
       const handleSubmit = async(e)=>{
           e.preventDefault();
           try{
+              await setPersistence(auth, browserLocalPersistence)
               await signInWithEmailAndPassword(auth, email, password)
               console.log("Login Successful")
               setloggedIn(true);
-              // localStorage.setItem("keepLoggedIn", JSON.stringify(true));
+             
               navigate('/')
   
           }
