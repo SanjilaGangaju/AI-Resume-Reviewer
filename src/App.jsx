@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom'
 import Navbar from './component/Navbar'
 import Home from './pages/Home'
@@ -7,16 +7,26 @@ import Login from './pages/Login'
 
 import Review from './component/Review'
 import Footer from './component/Footer'
+import Register from './pages/Register'
+import ProtectedRoute from './component/ProtectedRoute'
 const App = () => {
+  const[loggedIn, setloggedIn] = useState(false);
   return (
     <>
     <Router>
-      <Navbar></Navbar>
+      <Navbar loggedIn={loggedIn}></Navbar>
       <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/upload' element={<Upload></Upload>}></Route>
-        <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='/review' element={<Review></Review>}></Route>
+        <Route path='/' element={<Home loggedIn={loggedIn}></Home>}></Route>
+
+        <Route element={<ProtectedRoute loggedIn={loggedIn}></ProtectedRoute>}>
+            <Route path='/upload' element={<Upload></Upload>}></Route>
+           <Route path='/review' element={<Review></Review>}></Route>
+        </Route>
+        
+        <Route path='/login' element={<Login setloggedIn={setloggedIn}></Login>}></Route>
+       
+        <Route path='/register' element={<Register></Register>}></Route>
+
       </Routes>
       <Footer></Footer>
 
