@@ -1,11 +1,13 @@
-import React, {useCallback, useEffect, useState} from 'react'
+import React, {useCallback, useEffect, useState, CSSProperties} from 'react'
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useDropzone } from 'react-dropzone';
 import Groq from 'groq-sdk';
 import pdfToText from 'react-pdftotext';
 import { useNavigate } from 'react-router-dom';
+import { CircleLoader } from "react-spinners";
 
 const FileUploadForm = () => {
+   const [loading, setLoading] = useState(false);
 const navigate = useNavigate();
 const [resumeReview, setresumeReview] = useState(null);
 const [resumeContent, setresumeContent] = useState("")
@@ -19,6 +21,8 @@ const [resumeContent, setresumeContent] = useState("")
     const aiFeedback=(chatCompletion.choices[0]?.message?.content || "");
     const feedback = JSON.parse(aiFeedback.trim().replace(/^```json/, '').replace(/```$/, '').trim());
     setresumeReview(feedback)
+    setLoading(false);
+  
     console.log(feedback);
 
 
@@ -169,12 +173,15 @@ Also include:
     }
   });
   useEffect(()=>{
+    
     if(resumeReview){
         navigate('/review', {state: {resumeReview}});
     }
   },[resumeReview])
   useEffect(() => {
+    
    if(resumeContent){
+    setLoading(true)
      fetchDataAPI();
    }
   }, [resumeContent])
@@ -183,7 +190,10 @@ Also include:
   return (
     <div 
     className='flex flex-col items-center p-10 justify-center bg-gray-50 gap-5' >
-        <input {...getInputProps()}></input> 
+      {loading? (<div>
+        <CircleLoader></CircleLoader>
+      </div>):(<>
+            <input {...getInputProps()}></input> 
         <h2 className='font-semibold text-2xl text-indigo-500 text-center font-[poppins]'>Upload Your Resume</h2>
         
        <div {...getRootProps()} className ={`flex flex-col items-center  justify-center gap-5 border border-gray-300 border-dashed  h-64 border-2 rounded-xl w-[100%] ${isDragActive?'bg-gray-50 border border-dashed border-2 border-indigo-100 shadow-xl shadow-indigo-200':'bg-gray-50'}`}>
@@ -201,6 +211,9 @@ Also include:
        </>}
        
         </div>
+      </>)}
+       
+       
     </div>
   )
 }

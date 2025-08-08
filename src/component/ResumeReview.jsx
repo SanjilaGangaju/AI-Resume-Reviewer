@@ -5,7 +5,7 @@ const ResumeReview = () => {
     const location = useLocation();
 
     const {finalreview} = location.state || {};
-
+    
       if (!finalreview || !finalreview.scores) {
     return <p>No review data yet.</p>;
   }

@@ -17,6 +17,7 @@ const Review = () => {
 };
   return (
     <>
+    
     <div className='p-8 flex flex-col bg-gray-50  gap-4'>
       <h2 className='font-bold text-2xl'>Resume Review</h2>
      
