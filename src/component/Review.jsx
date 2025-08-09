@@ -18,22 +18,22 @@ const Review = () => {
   return (
     <>
     
-    <div className='p-8 flex flex-col bg-gray-50  gap-4'>
+    <div className='p-4 flex flex-col bg-indigo-100  gap-4'>
       <h2 className='font-bold text-2xl'>Resume Review</h2>
      
-     <div className="flex gap-2"> 
-       <div className='flex gap-10 justify-start items-center  px-10 '>
+     <div className="flex flex-col gap-3 bg-gray-50 rounded-xl "> 
+       <div className='flex gap-3 justify-start items-center  px-6 pt-8 '>
         
      
        <div >
-        <div className='relative bg-gray-100 h-40 w-[3rem] rounded-b-full '>
+        <div className='relative bg-yellow-100 h-30 md:h-40 w-[3rem] rounded-b-full '>
             <div style={{height: `${resumeReview.totalScore}%`}} className='absolute flex items-center justify-center font-bold bg-indigo-300 w-full bottom-0 rounded-b-full text-gray-50 text-[0.6rem]'>
             {resumeReview.totalScore}/100</div>
         </div>
        </div>
         
          
-          <div><p className='text-xl font-semibold text-gray-500'>Your Resume Score</p>
+          <div><p className='text-[1.1rem] font-semibold text-gray-500'>Your Resume Score</p>
           <p className='text-[0.6rem] text-gray-500'>This score is calculated based on the categories listed below</p>
           </div>
       </div>
@@ -55,7 +55,7 @@ const Review = () => {
       </div>
      </div>
      
-      <div className='bg-indigo-50 flex flex-col gap-3 rounded-xl px-5 py-3'>
+      <div className='bg-gray-50 flex flex-col gap-3 rounded-xl px-5 py-3'>
         <span className='font-bold text-xl text-gray-500'>ATS Score - {resumeReview["ATS Compatibility"].score}/100</span>
         <p>Great Job!</p>
         <p className='text-[0.7rem] text-gray-400'>This score represents how well your resume is likely to perform in Applicant Tracking Systems used by employers</p>
@@ -74,23 +74,23 @@ const Review = () => {
              <p className='text-[0.6rem] text-gray-400 italic'>Keep refining your resume to improve your chances of getting post ATS filters and  into the hand of recruiters</p>
           
         </div>
-      <div className='rounded-xl w-full flex flex-col gap-4 p-5'>
+      <div className='rounded-full w-full flex flex-col gap-4 p-1'>
       
       {Object.entries(resumeReview.scores).map(([key, category])=>(<div key={key}>
         <div>
           
-          <div className='capitalize text-[0.9rem] bg-gray-100   flex justify-between px-5 py-2 rounded text-gray-600'>
-            <div className='flex gap-4 items-center'><span>{key}</span> <span className='text-[0.7rem] text-gray-600 bg-gray-50 px-2 rounded'>{category.score} / 100</span></div>
+          <div className='capitalize text-[0.9rem] bg-gray-50   flex justify-between px-5 py-3  rounded text-gray-600'>
+            <div className='flex gap-4 items-center'><span>{key}</span> <span className='text-[0.7rem] text-gray-600 bg-gray-100 px-2 '>{category.score} / 100</span></div>
             
             <button  onClick = {()=>{handleAccordin(key)}}>{accordin.includes(key) ? '−' : '+'}</button>
            
 
           </div>
-           {accordin.includes(key) && (<div className='flex flex-col gap-2 px-5 justiy-center bg-indigo-50 rounded py-5'>
+           {accordin.includes(key) && (<div className='flex flex-col gap-2 px-5 justiy-center bg-gray-50  py-5'>
              
-             <div className='bg-blue-100 rounded py-1  px-2 text-[0.7rem]'>{category.feedback}</div>
+             <div className='bg-gray-100  py-1  px-2 text-[0.7rem]'>{category.feedback}</div>
              {category.issues?.length>0 &&(
-              <div className='flex flex-col gap-1'>{category.issues.map(item=>(<span className="bg-red-200 rounded py-1  px-2 text-[0.7rem]" key={item}>{item}</span>))}</div>
+              <div className='flex flex-col gap-1'>{category.issues.map(item=>(<span className="bg-red-200  py-1  px-2 text-[0.7rem]" key={item}>{item}</span>))}</div>
 
              )}
              {category.suggestions?.length>0&&(       

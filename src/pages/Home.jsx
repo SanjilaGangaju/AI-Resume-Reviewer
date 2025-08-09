@@ -2,47 +2,46 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 const Home = ({loggedIn}) => {
-   const testimonials = [
-    {
-      name: "Ayesha K.",
-      role: "Junior Web Developer",
-      avatar: "https://i.pravatar.cc/100?img=5",
-      quote:
-        "ResumeAI gave me insights I didn’t even know I needed. The suggestions helped me tailor my resume perfectly for developer roles — I landed 3 interviews in 2 weeks!",
-    },
-    {
-      name: "Mark T.",
-      role: "Aspiring Data Analyst",
-      avatar: "https://i.pravatar.cc/100?img=12",
-      quote:
-        "As someone switching from teaching to tech, I was overwhelmed. This tool not only scored my resume but told me why it needed changes. Super intuitive and helpful!",
-    },
-    {
-      name: "Samantha L.",
-      role: "Product Manager",
-      avatar: "https://i.pravatar.cc/100?img=25",
-      quote:
-        "I’ve been in the industry for 10+ years, but ResumeAI still caught weak points in my wording and formatting. The AI feedback felt like having a recruiter at my side.",
-    },
-  ];
+ const testimonials = [
+  {
+    name: "Ayesha K.",
+    role: "Junior Web Developer",
+    avatar: "https://i.pravatar.cc/100?img=5",
+    quote: "AiResvue helped me refine my résumé so it truly stood out. I landed three interviews within a week of updating it!"
+  },
+  {
+    name: "Michael R.",
+    role: "Project Manager",
+    avatar: "https://i.pravatar.cc/100?img=15",
+    quote: "The AI feedback was spot-on. It highlighted gaps I never noticed and suggested phrasing that impressed recruiters immediately."
+  },
+  {
+    name: "Sofia L.",
+    role: "UI/UX Designer",
+    avatar: "https://i.pravatar.cc/100?img=32",
+    quote: "With AiResvue’s suggestions, my résumé now feels polished and professional. I received my first job offer in two weeks."
+  }
+];
+
+
   return (
     <>
-   <main className='bg-blue-50'>
-      <section className='px-1 md:px-6 bg-blue-50 pb-4'>
-        <div className='bg-blue-50 rounded-xl grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-gray-50 md:px-8 py-5'>
-          <div className='flex bg-gray-50 h-full w-1/1 flex-col order-2 md:order-1 rounded-xl items-center justify-center  p-8 gap-6 '>
+   <main className='bg-indigo-100'>
+      <section className='px-1 md:px-6 bg-indigo-100 pb-4'>
+        <div className='bg-indigo-100 md:rounded-xl grid grid-cols-1 md:grid-cols-2 justify-center items-center bg-gray-50 md:px-8 py-5'>
+          <div className='flex bg-indigo-100 h-full w-1/1 flex-col order-2 md:order-1 rounded-xl items-center justify-center  p-3 gap-6 '>
         <div className='flex flex-col items-center md:text-center gap-4'><h1 className='text-3xl font-semibold text-indigo-500'>Land Your Dream Job with Smarter Resume Reviews</h1>
         <p className='text-lg text-gray-500'>AI-powered insights to make your resume stand out.</p>
         </div>
         <div><Link  to={loggedIn?"/upload":"/login"} className='rounded bg-indigo-400 hover:bg-indigo-600 text-white px-2 py-2'>Upload Resume</Link></div>
         {/* <div><img src="/src/assest"></img></div> */}
         </div>
-        <div className='overflow-hidden w-[100%] bg-transparent md:h-full h-40 order-1 md:order-2 flex items-center justify-center'><img src="./src/assets/hero-image.png" className='w-50 md:w-70 object-contain '></img></div>
+        <div className='overflow-hidden w-[100%] bg-transparent md:h-full h-50 order-1 md:order-2 flex items-center justify-center'><img src="src/assets/hero-image.png" className='w-[100%] h-full md:w-70 object-contain '></img></div>
         </div>
         
 
       </section>
-      <section className='px-1 bg-blue-50 py-2 mb-6'>
+      <section className='px-1 bg-indigo-100 py-2 mb-6'>
         <div className='flex flex-col items-center justify-center gap-5'>
           <h2 className='text-3xl text-indigo-500 font-semibold'>Features</h2>
         <div className='w-[90%] grid grid-cols-1 md:grid-cols-2 gap-4'>
@@ -70,7 +69,7 @@ const Home = ({loggedIn}) => {
         </div>
         
       </section>
-      <section className='px-1 py-2 bg-blue-50 pb-10 '>
+      <section className='px-1 py-2 bg-indigo-100 pb-10 '>
         <div className='flex flex-col items-center justify-center gap-6'>
           <h2 className='text-3xl font-semibold text-center text-indigo-500'>Testimonial Section</h2>
         <div>

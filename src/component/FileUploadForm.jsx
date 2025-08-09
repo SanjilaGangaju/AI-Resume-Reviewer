@@ -217,12 +217,12 @@ Also include:
  
   return (
     <div 
-    className='flex flex-col items-center p-10 justify-center bg-gray-50 gap-5' >
+    className='flex flex-col items-center p-3 justify-center bg-indigo-100 gap-5' >
       {loading? (<div className='h-56 md:h-45 flex items-center justify-center'>
         <CircleLoader loading={loading} color="#6366f1" size={100}></CircleLoader>
       </div>):(<>
             <input {...getInputProps()}></input> 
-        <h2 className='font-semibold text-2xl text-indigo-500 text-center font-[poppins]'>Upload Your Resume</h2>
+        <h2 className='font-semibold text-3xl text-indigo-500 text-center font-[poppins]'>Upload Your Resume</h2>
         
        <div {...getRootProps()} className ={`flex flex-col items-center  justify-center gap-5 border border-gray-300 border-dashed  h-64 border-2 rounded-xl w-[100%] ${isDragActive?'bg-gray-50 border border-dashed border-2 border-indigo-100 shadow-xl shadow-indigo-200':'bg-gray-50'}`}>
        {isDragActive ? <p className='font-semibold text-gray-500 text-[0.7rem]'>Drag here</p>:

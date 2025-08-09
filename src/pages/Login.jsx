@@ -27,7 +27,7 @@ const Login = ({setloggedIn}) => {
       }
   return (
     
-      <div className='flex flex-col m-auto px-2 py-6 rounded-xl border border-indigo-200 w-80  gap-4  items-center justify-center  my-6'>
+      <div className='flex flex-col m-[10%] px-3 py-6 rounded-xl border border-indigo-200   gap-4  items-center justify-center  my-6'>
         <h2 className='font-bolder text-2xl text-gray-600'>Login</h2>
       <div className='w-[90%]'>
          <form onSubmit={handleSubmit} className='flex flex-col gap-6'>

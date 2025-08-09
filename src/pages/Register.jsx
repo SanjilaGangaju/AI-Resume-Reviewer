@@ -24,7 +24,7 @@ const Register = () => {
     }
   return (
     
-    <div className='flex flex-col m-auto px-2 py-6 rounded-xl  border border-indigo-200 w-80 bg-white gap-4  items-center justify-center  my-6'>
+    <div className='flex flex-col m-[10%] px-2 py-6 rounded-xl  border border-indigo-200 bg-white gap-4  items-center justify-center  my-6'>
         <h2 className='font-bolder text-xl text-gray-500'>SignUp</h2>
       <div className='w-[90%]'>
          <form onSubmit={handleSubmit} className='flex flex-col gap-6'>
