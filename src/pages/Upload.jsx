@@ -3,12 +3,12 @@ import React from 'react'
 import FileUploadForm from '../component/FileUploadForm'
 
 
-const Upload = () => {
+const Upload = ({currentUser, dbloading , setdbloading}) => {
   return (
     <>
     
       
-    <FileUploadForm></FileUploadForm>
+    <FileUploadForm currentUser={currentUser} dbloading={dbloading} setdbloading={setdbloading}></FileUploadForm>
   
     
     </>

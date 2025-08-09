@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <>
-    <footer className='bg-blue-100 px-1 py-4'>
+    <footer className='bg-blue-100 px-1 py-4 bottom-0'>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
          <div className='flex flex-col items-center gap-3 justify-center '><span className='text-indigo-500 text-xl '>AiResvue</span>
          <p className='text-[0.7rem] text-gray-600 text-center'> Smart resume feedback powered by AI. Improve your job chances with real-time insights.</p>

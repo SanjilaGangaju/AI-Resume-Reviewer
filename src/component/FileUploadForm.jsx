@@ -5,15 +5,34 @@ import Groq from 'groq-sdk';
 import pdfToText from 'react-pdftotext';
 import { useNavigate } from 'react-router-dom';
 import { CircleLoader } from "react-spinners";
+import {collection, addDoc, serverTimestamp} from "firebase/firestore";
+import {db} from "../firebase";
 
-const FileUploadForm = () => {
+
+const FileUploadForm = ({currentUser, setdbloading}) => {
    const [loading, setLoading] = useState(false);
+   
 const navigate = useNavigate();
+const [filename, setfilename] = useState("")
 const [resumeReview, setresumeReview] = useState(null);
 const [resumeContent, setresumeContent] = useState("")
   const groq = new Groq({ apiKey: import.meta.env.VITE_GROQ_API_KEY,
     dangerouslyAllowBrowser: true 
   });
+  const saveFeedback = async({userId, resumeFileName, feedbackText})=>{
+    try{
+      await addDoc(collection(db, "resumeFeedback"),{
+        userId,
+        resumeFileName,
+        feedbackText,
+        createdAt: serverTimestamp()
+      });
+      console.log("Feedback saved")
+    }
+    catch(error){
+      console.error("Error saving feedback",error)
+    }
+  }
    
   const fetchDataAPI=async()=>{
     const chatCompletion = await getGroqChatCompletion();
@@ -23,7 +42,15 @@ const [resumeContent, setresumeContent] = useState("")
     setresumeReview(feedback)
     setLoading(false);
   
-    console.log(feedback);
+    if (currentUser){
+     await saveFeedback({
+  userId: currentUser.uid,
+  resumeFileName: filename,
+  feedbackText: (feedback)
+});
+    }
+    
+    
 
 
   }
@@ -139,6 +166,7 @@ Also include:
   //drop handler
   const onDrop=useCallback(acceptedFiles =>{
        const uploadedFile=(acceptedFiles[0]);
+       setfilename(uploadedFile.name)
        if(uploadedFile.type=='application/pdf'){
         const extractText= async()=>{
             try{

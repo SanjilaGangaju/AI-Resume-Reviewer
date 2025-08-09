@@ -45,6 +45,7 @@ const Navbar = ({loggedIn, setloggedIn}) => {
         <Link className="relative text-gray-600 after:absolute after:left-0 after:bottom-0 after:transition-all after:w-0 after:duration-300 after:ease-in-out after:h-[2px] hover:after:w-full after:bg-indigo-400"
  to="/">Home</Link>
   <Link className='hover-underline text-gray-600' to="/upload">Upload</Link>
+  <Link className='hover-underline text-gray-600' to="/dashboard">Dashboard</Link>
 
     <button onClick={logout} className='text-gray-600'>Logout</button>
     </>
@@ -60,8 +61,16 @@ const Navbar = ({loggedIn, setloggedIn}) => {
           <button onClick={handleNav} className='text-indigo-400 text-[1.5rem]'><IoIosClose /></button>
         <Link className="relative after:absolute after:left-0 text-gray-600 after:bottom-0 after:transition-all after:w-0 after:duration-300 after:ease-in-out after:h-[2px] hover:after:w-full after:bg-current"
  to="/">Home</Link>
-        <Link className='hover-underline text-gray-600 ' to="/upload">Upload</Link>
-        <Link className='hover-underline text-gray-600' to="/login">Login</Link>
+        {loggedIn ?(<>
+            <Link className='hover-underline text-gray-600' to="/upload">Upload</Link>
+            <Link className='hover-underline text-gray-600' to="/dashboard">Dashboard</Link>
+           
+    <button onClick={logout} className='text-gray-600'>Logout</button>
+        </>
+         
+        ):(<><Link className='hover-underline text-gray-600 ' to="/upload">Upload</Link>
+        <Link className='hover-underline text-gray-600' to="/login">Login</Link></>)}
+        
         </div>}
   
          <button onClick={handleNav} className='md:hidden'>
