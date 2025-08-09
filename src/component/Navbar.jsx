@@ -33,7 +33,7 @@ const Navbar = ({loggedIn, setloggedIn}) => {
   }
   return (
     <>
-    <div className='relative px-10 bg-gray-50 py-6'>
+    <div className='relative px-4 bg-blue-50 py-6'>
       <nav className=' flex items-center  justify-between'>
         <div className='text-2xl text-center flex items-center text-indigo-500 justify-center font-bold'><Link to='/'>AiResvue</Link></div>
         
@@ -56,8 +56,8 @@ const Navbar = ({loggedIn, setloggedIn}) => {
       }
         </div>
         {hamOn&&
-          <div className='md:hidden absolute right-0 top-10  bg-white w-full py-4 flex flex-col items-end pr-10 text-[0.8rem] font-semibold  gap-2'>
-          <button onClick={handleNav} className='text-indigo-400 text-[1.2rem]'><IoIosClose /></button>
+          <div className='md:hidden absolute right-0 top-15 h-50 bg-white w-full py-1 flex flex-col justify-center items-end pr-5 text-[0.9rem] font-semibold  gap-5'>
+          <button onClick={handleNav} className='text-indigo-400 text-[1.5rem]'><IoIosClose /></button>
         <Link className="relative after:absolute after:left-0 text-gray-600 after:bottom-0 after:transition-all after:w-0 after:duration-300 after:ease-in-out after:h-[2px] hover:after:w-full after:bg-current"
  to="/">Home</Link>
         <Link className='hover-underline text-gray-600 ' to="/upload">Upload</Link>

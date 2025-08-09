@@ -190,8 +190,8 @@ Also include:
   return (
     <div 
     className='flex flex-col items-center p-10 justify-center bg-gray-50 gap-5' >
-      {loading? (<div>
-        <CircleLoader></CircleLoader>
+      {loading? (<div className='h-56 md:h-45 flex items-center justify-center'>
+        <CircleLoader loading={loading} color="#6366f1" size={100}></CircleLoader>
       </div>):(<>
             <input {...getInputProps()}></input> 
         <h2 className='font-semibold text-2xl text-indigo-500 text-center font-[poppins]'>Upload Your Resume</h2>
