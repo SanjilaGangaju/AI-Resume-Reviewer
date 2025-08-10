@@ -45,23 +45,23 @@ const Home = ({loggedIn}) => {
         <div className='flex flex-col items-center justify-center gap-5'>
           <h2 className='text-3xl text-indigo-500 font-semibold'>Features</h2>
         <div className='w-[90%] grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <div className='bg-white rounded-xl p-4 flex flex-col items-center justify-center text-center'>
-  <h3 className='font-semibold text-lg text-indigo-400 mb-2'>Smart Feedback</h3>
+          <div className='bg-gray-50 border border-indigo-600 rounded-xl p-4 flex flex-col items-center justify-center text-center'>
+  <h3 className='font-semibold text-lg text-indigo-500 mb-2'>Smart Feedback</h3>
   <p className='text-sm text-justify text-gray-500'>Get real-time suggestions to refine your resume and highlight your strengths instantly.</p>
 </div>
 
-<div className='bg-white rounded-xl  p-4 flex flex-col items-center justify-center text-center'>
-  <h3 className='font-semibold text-indigo-400 text-lg mb-2'>Skill Matching</h3>
+<div className='bg-gray-50 border border-indigo-600 rounded-xl  p-4 flex flex-col items-center justify-center text-center'>
+  <h3 className='font-semibold text-indigo-500 text-lg mb-2'>Skill Matching</h3>
   <p className='text-sm text-justify text-gray-500'>Automatically match your skills to the right roles using advanced keyword analysis.</p>
 </div>
 
-<div className='bg-white  rounded-xl p-4 flex flex-col items-center justify-center text-center'>
-  <h3 className='font-semibold text-indigo-400 text-lg mb-2'>ATS Compatibility Check</h3>
+<div className='bg-gray-50 border border-indigo-600 rounded-xl p-4 flex flex-col items-center justify-center text-center'>
+  <h3 className='font-semibold text-indigo-500 text-lg mb-2'>ATS Compatibility Check</h3>
   <p className='text-sm text-justify text-gray-500'>Ensure your resume passes through Applicant Tracking Systems with optimized formatting.</p>
 </div>
 
-<div className='bg-white  rounded-xl p-4 flex flex-col items-center justify-center text-center'>
-  <h3 className='font-semibold text-indigo-400 text-lg mb-2'>Fast Turnaround</h3>
+<div className='bg-gray-50 border border-indigo-600  rounded-xl p-4 flex flex-col items-center justify-center text-center'>
+  <h3 className='font-semibold text-indigo-500 text-lg mb-2'>Fast Turnaround</h3>
   <p className='text-sm text-justify text-gray-500'>Receive detailed feedback and improvements in minutes so you can apply faster.</p>
 </div>
 
