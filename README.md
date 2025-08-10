@@ -9,4 +9,11 @@
 * Users can also view the history of feebacks they received for each upload on their own dashboard
 * Users can register, login and logout
 * Responsive Design and User Friendly Design
+
+## Tech Stack
+* ReactJs
+* Tailwind Css
+* Firebase
+* Vite
+* React-Icons
   
