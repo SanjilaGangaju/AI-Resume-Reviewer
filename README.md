@@ -13,7 +13,7 @@
 ## Tech Stack
 * ReactJs
 * Tailwind Css
-* Firebase
+* Firebase Auth and Firestore
 * Vite
 * React-Icons
   
