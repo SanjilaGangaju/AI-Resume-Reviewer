@@ -16,4 +16,6 @@
 * Firebase Auth and Firestore
 * Vite
 * React-Icons
+
+## Check out the live site here: [My Project Live](https://ai-resume-reviewer-six.vercel.app/)
   
