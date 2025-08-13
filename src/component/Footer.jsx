@@ -1,19 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const Footer = () => {
+const Footer = ({loggedIn}) => {
   return (
     <>
     <footer className='bg-gray-100 px-1 py-4 bottom-0'>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
          <div className='flex flex-col items-center gap-3 justify-center '><span className='text-indigo-500 text-xl '>AiResvue</span>
-         <p className='text-[0.7rem] text-gray-600 text-center'> Smart resume feedback powered by AI. Improve your job chances with real-time insights.</p>
+         <p className='text-[0.8rem] text-gray-600 text-center'> Smart resume feedback powered by AI. Improve your job chances with real-time insights.</p>
          </div>
       
-       <div className='flex text-[0.8rem] gap-6 items-center justify-center font-semibold  mb-2'>
+       <div className='flex flex-col md:flex text-[0.8rem] pl-5 gap-6 items-start justify-center font-semibold  mb-2'>
+        {loggedIn?
+        (<>
+        <Link className=" text-gray-600 text-[0.9rem]" to="/">Home</Link>
+        <Link className='text-gray-600 text-[0.9rem]' to="/upload">Upload</Link>
+        <Link className='text-gray-600 text-[0.9rem]' to="/dashboard">Dashboard</Link>
+        </>)
+        :(<>
+          <Link className=" text-gray-600 text-[0.9rem]" to="/">Home</Link>
+          <Link className='text-gray-600 text-[0.9rem]' to="/login">Login</Link></>
+        )
+        }
         
-        <Link className=" text-gray-500 text-[0.9rem]" to="/">Home</Link>
-        <Link className='text-gray-500 text-[0.9rem]' to="/upload">Upload</Link>
-        <Link className='text-gray-500 text-[0.9rem]' to="/login">Login</Link>
         </div>
        <div className='flex flex-col justify-center items-center'>
           <h3 className="text-sm font-semibold text-gray-500 mb-2">Connect</h3>

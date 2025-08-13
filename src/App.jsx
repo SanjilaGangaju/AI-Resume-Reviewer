@@ -57,7 +57,7 @@ const App = () => {
         <Route path='dashboard' element = {<Dashboard dbloading={dbloading} setdbloading={setdbloading} currentUser={user}></Dashboard>}></Route>
 
       </Routes>
-      <Footer></Footer>
+      <Footer loggedIn={loggedIn}></Footer>
 
     </Router>
     </>
