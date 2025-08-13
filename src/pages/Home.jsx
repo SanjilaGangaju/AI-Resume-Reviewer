@@ -36,7 +36,7 @@ const Home = ({loggedIn}) => {
         <div><Link  to={loggedIn?"/upload":"/login"} className='rounded bg-indigo-400 hover:bg-indigo-600 text-white px-2 py-2'>Upload Resume</Link></div>
         {/* <div><img src="/src/assest"></img></div> */}
         </div>
-        <div className='overflow-hidden w-[100%] bg-transparent md:h-full h-50 order-1 md:order-2 flex items-center justify-center'><img src="src/assets/hero-image.png" className='w-[100%] h-full md:w-70 object-contain '></img></div>
+        <div className='overflow-hidden w-[100%] bg-transparent md:h-full h-50 order-1 md:order-2 flex items-center justify-center'><img src="/assets/hero-image.png" className='w-[100%] h-full md:w-70 object-contain '></img></div>
         </div>
         
 
