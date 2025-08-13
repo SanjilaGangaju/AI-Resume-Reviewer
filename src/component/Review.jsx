@@ -19,9 +19,9 @@ const Review = () => {
     <>
     
     <div className='p-4 flex flex-col bg-indigo-100  gap-4'>
-      <h2 className='font-bold text-2xl'>Resume Review</h2>
+      <h2 className='font-bold text-center text-indigo-500 text-2xl'>Resume Review</h2>
      
-     <div className="flex flex-col gap-3 bg-gray-50 rounded-xl "> 
+     <div className="flex flex-col md:flex-row gap-3 bg-gray-50 rounded-xl "> 
        <div className='flex gap-3 justify-start items-center  px-6 pt-8 '>
         
      
