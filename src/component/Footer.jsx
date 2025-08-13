@@ -9,7 +9,7 @@ const Footer = ({loggedIn}) => {
          <p className='text-[0.8rem] text-gray-600 text-center'> Smart resume feedback powered by AI. Improve your job chances with real-time insights.</p>
          </div>
       
-       <div className='flex flex-col md:flex text-[0.8rem] pl-5 gap-6 items-start justify-center font-semibold  mb-2'>
+       <div className='flex flex-col md:flex-row text-[0.8rem] pl-5 gap-6 items-start justify-center font-semibold  mb-2'>
         {loggedIn?
         (<>
         <Link className=" text-gray-600 text-[0.9rem]" to="/">Home</Link>
